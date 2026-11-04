@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zonnestelsel · een reis langs de Zon en de acht planeten</title>
+    <meta name="description" content="Vlieg in 3D langs de Zon en alle planeten, met echte cijfers over elke stop.">
+    <meta name="theme-color" content="#030308">
+    <link rel="preload" href="fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="importmap">
+        { "imports": { "three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/" } }
+    </script>
+</head>
+<body class="loading intro">
+    <canvas id="scene" aria-label="Het zonnestelsel in 3D"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <header class="top">
+        <a class="brand" href="#" onclick="location.hash = ''; location.reload(); return false;">Zonnestelsel</a>
+        <button id="overview-btn" class="ghost">Overzicht</button>
+    </header>
+
+    <section class="intro-screen" aria-labelledby="intro-title">
+        <p class="kicker">4,5 miljard kilometer in tien stops</p>
+        <h1 id="intro-title">Een reis door<br><em>het zonnestelsel</em></h1>
+        <p class="lead">Begin bij de Zon en vlieg langs alle acht planeten. De afstanden zijn ingekort, de cijfers zijn echt.</p>
+        <button id="start" class="start">Begin de reis</button>
+        <p class="hint">Scroll, gebruik de pijltjestoetsen of veeg om verder te reizen</p>
+    </section>
+
+    <article class="info" id="info" aria-live="polite">
+        <p class="kicker reveal" style="--d:0s"><span id="i-nr">01</span> / 10 · <span id="i-kind"></span></p>
+        <h2 id="i-name"></h2>
+        <p class="lead reveal" id="i-intro" style="--d:0.25s"></p>
+        <dl class="stats" id="i-stats"></dl>
+        <p class="fact reveal" style="--d:0.7s"><span>Wist je dat</span><span id="i-fact"></span></p>
+    </article>
+
+    <div class="meter" aria-hidden="true">
+        <div><span>Afstand tot de Zon</span><b id="dist">0 km</b></div>
+        <div><span>Zonlicht onderweg</span><b id="light">…</b></div>
+    </div>
+
+    <nav class="timeline" id="timeline" aria-label="Stops van de reis"></nav>
+    <div class="labels" id="labels"></div>
+    <div class="tip" id="tip"></div>
+
+    <div class="loader" aria-hidden="true"><span>Sterren aansteken…</span></div>
+    <p class="no-webgl-text">Je browser ondersteunt geen WebGL, dus de 3D-reis kan hier niet worden getoond.</p>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
